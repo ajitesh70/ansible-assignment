@@ -1,0 +1,15 @@
+---
+- name: Manage system packages
+  import_tasks: packages.yml
+
+- name: Manage system users
+  import_tasks: users.yml
+
+- name: Manage git repositories
+  import_tasks: git.yml
+
+- name: Manage folder structures
+  import_tasks: folders.yml
+
+- name: Manage system settings
+  import_tasks: system.yml

@@ -1,0 +1,14 @@
+---
+- name: Ensure groups exist
+  group:
+    name: "{{ item.group | default(item.name) }}"
+    state: present
+  loop: "{{ system_users }}"
+
+- name: Ensure users exist
+  user:
+    name: "{{ item.name }}"
+    shell: "{{ item.shell | default('/bin/bash') }}"
+    groups: "{{ item.groups | default([]) }}"
+    state: present
+  loop: "{{ system_users }}"

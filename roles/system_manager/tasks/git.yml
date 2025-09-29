@@ -1,0 +1,8 @@
+---
+- name: Ensure git repos are cloned
+  git:
+    repo: "{{ item.repo }}"
+    dest: "{{ item.dest }}"
+    version: "{{ item.version | default('main') }}"
+    force: yes
+  loop: "{{ git_repos }}"

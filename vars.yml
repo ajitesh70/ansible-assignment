@@ -1,0 +1,43 @@
+system_packages:
+  - git
+  - curl
+  - vim
+
+system_users:
+  - name: devuser
+    shell: /bin/bash
+    groups: [sudo]
+
+
+git_repos:
+  - repo: "https://github.com/opstree/spring3hibernate.git"
+    dest: "/opt/apps/spring3hibernate"
+    version: master
+
+
+
+system_folders:
+  - path: /opt/apps
+    owner: devuser
+    group: devuser
+    mode: "0755"
+
+sysctl_settings:
+  - key: net.ipv4.ip_forward
+    value: "1"
+
+cron_jobs:
+  - name: cleanup_tmp
+    job: "rm -rf /tmp/*"
+    hour: "3"
+
+
+
+
+
+
+
+
+
+
+

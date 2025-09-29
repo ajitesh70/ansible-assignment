@@ -1,0 +1,7 @@
+---
+system_packages: []
+system_users: []
+git_repos: []          # <-- safe default
+system_folders: []
+sysctl_settings: []
+cron_jobs: []

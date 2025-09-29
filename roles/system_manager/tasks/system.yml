@@ -1,0 +1,17 @@
+---
+- name: Set sysctl params
+  sysctl:
+    name: "{{ item.key }}"
+    value: "{{ item.value }}"
+    state: present
+    reload: yes
+  loop: "{{ sysctl_settings }}"
+
+- name: Configure cron jobs
+  cron:
+    name: "{{ item.name }}"
+    user: "{{ item.user | default('root') }}"
+    minute: "{{ item.minute | default('*') }}"
+    hour: "{{ item.hour | default('*') }}"
+    job: "{{ item.job }}"
+  loop: "{{ cron_jobs }}"
